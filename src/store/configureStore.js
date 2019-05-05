@@ -1,12 +1,16 @@
-import { createStore, combineReducers } from "redux"
-import cartReducer from "../reducers/cart"
+import { createStore, applyMiddleware, compose } from "redux"
+import createSagaMiddleware from "redux-saga"
 
-export default () => {
-    const store = createStore(
-        combineReducers({
-            cart: cartReducer
-        })
-    )
+import cart from "../reducers/cart"
+import { watcherSaga } from "../sagas/cartSaga"
 
-    return store
-}
+const sagaMiddleware = createSagaMiddleware()
+
+const store = createStore(
+    cart,
+    compose(applyMiddleware(sagaMiddleware))
+)
+
+sagaMiddleware.run(watcherSaga)
+
+export default store
