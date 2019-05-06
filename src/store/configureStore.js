@@ -1,16 +1,11 @@
 import { createStore, applyMiddleware, compose } from "redux"
-import createSagaMiddleware from "redux-saga"
+import thunk from "redux-thunk"
 
 import cart from "../reducers/cart"
-import { watcherSaga } from "../sagas/cartSaga"
-
-const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
     cart,
-    compose(applyMiddleware(sagaMiddleware))
+    compose(applyMiddleware(thunk))
 )
-
-sagaMiddleware.run(watcherSaga)
 
 export default store
