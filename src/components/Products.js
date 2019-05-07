@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import { addCart, removeCart } from "../actions/cart"
 
-const ProductList = (props) => {
+const Products = (props) => {
     return props.products.map(each => {
         return (
         <div key={each.id}>
@@ -18,8 +18,5 @@ const ProductList = (props) => {
 }
 
 const mapStateToProps = state => ({ products: state })
-// const mapDispatchToProps = dispatch => ({
-//     fetchData: () => dispatch(fetchData())
-// })
 
-export default connect(mapStateToProps)(ProductList)
+export default connect(mapStateToProps)(Products)

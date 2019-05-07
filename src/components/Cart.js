@@ -1,27 +1,20 @@
 import React from "react"
 import { connect } from "react-redux"
 
-class Cart extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            items: 0
-        }
-    }
+import { addCart, removeCart } from "../actions/cart"
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.cart.length !== this.props.cart.length) {
-            this.setState({items: this.props.cart.length})
-        }
-    }
-
-    render() {
+const Cart = (props) => {
+    return props.cart.map(each => {
         return (
-            <div>
-                <p>{this.state.items} x of {this.props.cart ? this.props.cart.map(each => each.name) : "No Item"}</p>
-            </div>
+        <div key={each.id}>
+            <img alt="motors" src={each.img} width="100"/>
+            <h3>{each.name}</h3>
+            <h5>Number of items {props.cart ? props.cart.filter(ele => ele.id === each.id).length : 0}</h5>
+            <button onClick={() => props.dispatch(addCart(each))}>Purchase Now</button>
+            <button onClick={() => props.dispatch(removeCart(each))}>Remove</button>
+        </div>
         )
-    }
+    })
 }
 
 const mapStateToProps = state => ({ cart: state })

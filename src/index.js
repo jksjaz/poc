@@ -4,14 +4,14 @@ import { Provider } from "react-redux"
 import * as serviceWorker from './serviceWorker';
 
 import store from "./store/configureStore"
-import App from './components/App';
+import AppRoutes from "./router/AppRoutes"
 
 import { firebase } from "./db/Firebase"
 import { fetchData } from "./actions/cart"
 
 const jsx = (
     <Provider store={store}>
-        <App/>
+        <AppRoutes/>
     </Provider>
 )
 
