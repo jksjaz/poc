@@ -13,5 +13,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 const db = firebase.database()
+const storageRef = firebase.storage().ref()
 
-export { firebase, db as default }
+export { firebase, storageRef, db as default }

@@ -7,7 +7,7 @@ import store from "./store/configureStore"
 import AppRoutes from "./router/AppRoutes"
 
 import { firebase } from "./db/Firebase"
-import { fetchData } from "./actions/cart"
+import { fetchProducts } from "./actions/products"
 
 const jsx = (
     <Provider store={store}>
@@ -17,7 +17,7 @@ const jsx = (
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 
-store.dispatch(fetchData()).then(() => {
+store.dispatch(fetchProducts()).then(() => {
     ReactDOM.render(jsx, document.getElementById('root'));
 })
 
