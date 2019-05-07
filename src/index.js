@@ -5,6 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 import store from "./store/configureStore"
 import AppRoutes from "./router/AppRoutes"
+import history from "./helpers/history"
 
 import { firebase } from "./db/Firebase"
 import { fetchProducts } from "./actions/products"
@@ -24,8 +25,12 @@ store.dispatch(fetchProducts()).then(() => {
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         console.log("log in")
+        if (history.location.pathname === "/") {
+            history.push("/products")
+        }
     } else {
         console.log("log out")
+        history.push("/")
     }
 })
 

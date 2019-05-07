@@ -1,11 +1,10 @@
-import React from 'react';
-import Products from './Products'
+import React from 'react'
+import Login from "./Login"
 
 const App = () => {
   return (
     <div>
-      <h1>Header</h1>
-      <Products/>
+      <Login/>
     </div>
   );
 }
